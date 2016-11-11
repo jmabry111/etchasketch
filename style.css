@@ -1,0 +1,29 @@
+.nl {
+  clear: both;
+}
+
+.square {
+  display:inline-block;
+  vertical-align: middle;
+  height:2.5rem;
+  width:2.5rem;
+  background-color:red;
+}
+
+#grid{
+  width: 960px;
+  border: 1px solid #000;
+  margin: auto;
+  text-align: center;
+}
+
+#content {
+  width: 970px;
+  border-radius: 10px;
+  border: 5px solid red; 
+}
+
+#controls {
+  margin: 15px auto 15px;
+  text-align: center;
+}
