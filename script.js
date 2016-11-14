@@ -1,4 +1,4 @@
-numSquares = parseInt(prompt("Please enter a number between 3 & 100."))
+numSquares = parseInt(prompt("Please enter a number between 2 & 100."))
 
 $(document).ready(function(){
   grid = $('#grid');
@@ -6,23 +6,24 @@ $(document).ready(function(){
   } else {
     numSquares = 64; 
   }
-    for (g=1; g < numSquares; g++) {
-      for (c=1; c < numSquares; c++) {
+    for (g=1; g <= numSquares; g++) {
+      for (c=1; c <= numSquares; c++) {
         grid.append('<div class="square"></div>');
       } 
       grid.append('<div class="nl"></div>');
     } 
 
-    squareSize = 960/(numSquares)
+    squareSize = 600/(numSquares)
     $('.square').width(squareSize);
     $('.square').height(squareSize);
 });
 
 $(document).ready(function() {
-  $('.square').hover(function(){
-    $(this).fadeOut('fast').fadeIn('fast');
-    $(this).css("background-color", "black");
-  });
+    lineColor = chooseColor() || 'black';
+    $('.square').hover(function(){
+      $(this).fadeOut('fast').fadeIn('fast');
+      $(this).css("background-color", lineColor);
+    });
 });
 
 $(document).ready(function() {
@@ -30,3 +31,15 @@ $(document).ready(function() {
     location.reload()
   });
 });
+
+function chooseColor() {
+  lineColor = $('#color').val();
+  $('#color').on('change', function(){
+    if($(this).val() == "random"){
+      lineColor = '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6);
+    } else {
+      lineColor = $(this).val();
+    }
+  });
+}
+
